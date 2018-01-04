@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use App\Mail\Welcome;
+use App\Http\Requests\RegistrationRequest;
 
 
 class RegistrationController extends Controller
@@ -17,29 +15,15 @@ class RegistrationController extends Controller
        return view('registration.create');
     }
 
-    public function store()
+    public function store(RegistrationRequest $request)
     {
-        $this->validate(request(),[
-           'name' => 'required',
-           'email' => 'unique:users|required|email',
-            'password' => 'required|confirmed' //for confirmation field must be named ***_confirmation : password_confirmation
-        ]);
+
+        //this is very specific to create user in Request class.
+        // More often, we should do it right here or in a model.
+
+        $request->persist();
 
 
-        $data = request(['name','email']);
-        $data['password'] = bcrypt(request('password'));
-
-
-
-
-        $user = User::create($data);
-
-
-        auth()->login($user);
-
-        \Mail::to($user)->send(new Welcome($user));
-
-        //php artisan make:mail Welcome
 
         return redirect()->home();
     }
