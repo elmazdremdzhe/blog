@@ -49,4 +49,14 @@ class Post extends Model
 
     }
 
+
+    //to attach tag to post, do
+    // $post->tags()->attach($tag);
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    //@todo start lesson 31
+
 }
