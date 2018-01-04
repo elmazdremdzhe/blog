@@ -8529,3 +8529,10 @@ h6,
   margin-bottom: 0;
 }
 
+#flash-message {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+}
+

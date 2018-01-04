@@ -21,8 +21,10 @@ class RegistrationController extends Controller
         //this is very specific to create user in Request class.
         // More often, we should do it right here or in a model.
 
+
         $request->persist();
 
+session()->flash('message', "thank so much for signing up");
 
 
         return redirect()->home();
