@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Repositories\Posts;
 
 class PostsController extends Controller
 {
@@ -13,10 +14,8 @@ class PostsController extends Controller
     }
 
 
-    public function index()
+    public function index(Posts $posts)
     {
-
-
 
 
 
@@ -30,6 +29,8 @@ class PostsController extends Controller
 
        return view('posts.index', compact('posts'));
     }
+
+
     public function show(Post $post)
     {
 

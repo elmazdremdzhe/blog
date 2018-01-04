@@ -1,6 +1,11 @@
 <?php
 
-use App\Task;
+//View => view()
+//Request => request()
+//App => app()
+//App::make => resolve()
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +16,7 @@ use App\Task;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 /*
 Route::get('/', function () {
     $tasks = DB::table('tasks')->get();

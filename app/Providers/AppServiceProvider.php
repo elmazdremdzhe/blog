@@ -27,5 +27,24 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+        //@todo  Ep25 02::00
+
+
+//Here is an example of registering model with service container and
+//passing config to it
+//so that every time when we call it (not directly but from service container
+// through App::make()
+// the Class instance called with passed argument already
+//
+
+
+        \App::bind('App\Redis', function(){
+
+            return new \App\Redis(config('services.stripe.secret'));
+        });
+
+
+        $stripe = \App::make('App\Redis');
     }
 }

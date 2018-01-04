@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Mail\Welcome;
+
 
 class RegistrationController extends Controller
 {
@@ -19,14 +21,25 @@ class RegistrationController extends Controller
     {
         $this->validate(request(),[
            'name' => 'required',
-           'email' => 'required|email',
+           'email' => 'unique:users|required|email',
             'password' => 'required|confirmed' //for confirmation field must be named ***_confirmation : password_confirmation
         ]);
 
-        $user = User::create(request(['name', 'email', bcrypt('password')]));
+
+        $data = request(['name','email']);
+        $data['password'] = bcrypt(request('password'));
+
+
+
+
+        $user = User::create($data);
 
 
         auth()->login($user);
+
+        \Mail::to($user)->send(new Welcome($user));
+
+        //php artisan make:mail Welcome
 
         return redirect()->home();
     }
