@@ -12,9 +12,17 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
+
+    // To create all needed classes for these events:
+    // php artisan event:generate
+
     protected $listen = [
-        'App\Events\Event' => [
+        /*'App\Events\Event' => [
             'App\Listeners\EventListener',
+        ],*/
+        'App\Events\ThreadCreated' => [
+            'App\Listeners\NotifySubscribers',
+            'App\Listeners\CheckForSpam',
         ],
     ];
 
