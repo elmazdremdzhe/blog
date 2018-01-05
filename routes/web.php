@@ -28,6 +28,8 @@ Route::get('/', function () {
     ]);
 });*/
 
+
+
 Route::get('/', 'PostsController@index')->name('home');
 Route::post('/posts', 'PostsController@store');
 Route::get('/posts/create', 'PostsController@create');
@@ -45,6 +47,7 @@ Route::get('/about', function () {
 Route::get('/tasks', 'TasksController@index');
 
 Route::get('/tasks/{task}', 'TasksController@orshow');
+Route::get('/posts/tags/{tag}', 'TagsController@index');
 
 
 Route::get('/register', 'RegistrationController@create');

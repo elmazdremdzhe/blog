@@ -14,7 +14,7 @@ class PostsController extends Controller
     }
 
 
-    public function index(Posts $posts)
+    public function index()
     {
 
 
